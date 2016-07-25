@@ -1,3 +1,8 @@
+/*
+ details :
+        Reg No : E/13/347
+        Name : Sithara Pitiyage
+*/
 package Anonymus;
 
 import java.util.Arrays;
@@ -12,7 +17,7 @@ public class Array {
     private int reduceCount;
 
     public Array(){
-           this.myArr=new int[0];
+           this.myArr=new int[0];   // make a zero size array
             this.count1=0;
 
     }
@@ -36,25 +41,29 @@ public class Array {
 
     }
 
-    public void add(int d,int index){
+    public void add(int d,int index){   // add given element to specific index
+      try{
         int i;
         int j=0;
         this.temp++;
-        this.newArry=new int[temp];
-        for(i=0;i<(temp);i++){
+        this.newArry=new int[temp];     // making a new array
+        for(i=0;i<(temp);i++){      // copying previous array to newArry
             if(i!=index){
                 newArry[i]=myArr[j];
                 j++;
             }else
                 newArry[i]=d;
         }
-        myArr=newArry;
-        count1++;
+       // myArr=newArry;
+        count1++;          // count present the number of elements of a array
         this.reduceCount=count1;        // reduceCount is used as tempary variable for count
+      }catch (Exception e){
+          System.out.println("Error = " + e);
+      }
     }
 
 
-    public void replace(int d,int index){
+    public void replace(int d,int index){       // replace given element to specific index
         try{
             newArry[index]=d;
         }
@@ -63,17 +72,25 @@ public class Array {
         }
     }
 
-    public int get(int index){
-        int element=newArry[index];
+    public int get(int index){          // get the element of given index
+       int element = 0;
+        try{
+        element=newArry[index];
+        return element;
+       } catch (Exception e){
+           System.out.println("Error");
+       }
         return element;
     }
 
-    public void remove(int index){
+
+    public void remove(int index){          // remove specific element of the given index
+      try{
             reduceCount--;
-       this.tempArry= new int[reduceCount];
+            this.tempArry= new int[reduceCount];    // making new array which reduce 1 amount of size
         int j=0;
         int i=0;
-        for(i=0;i<reduceCount;i++){
+        for(i=0;i<reduceCount;i++){     // coping new array
             if(i>=index){
                 tempArry[i]=newArry[i+1];
             }else{
@@ -82,13 +99,16 @@ public class Array {
 
         }
         newArry=tempArry;
+      } catch (Exception e){
+          System.out.println("Error = " + e);
+      }
     }
 
-    public boolean isEmpty(){
-        if(this.count1==0){
-            return true;
-        }
-        return false;
+    public boolean isEmpty(){       // to check whether array
+            if(this.count1==0){
+                return true;
+            }
+            return false;
     }
 
     public int size(){
@@ -100,20 +120,29 @@ public class Array {
     }
 
     public boolean contains(int d){
+     try{
         for(int p:newArry){
             if(p==d){
                 return true;
             }
         }
+     } catch (Exception e){
+         System.out.println("Error = " + e);
+     }
         return false;
     }
 
+
     public void trimToSize(int size1){
-        int [] trimArry= new int[size1];
-        for(int k=0;k<size1;k++){
-            trimArry[k]=newArry[k];
-        }
-        newArry=trimArry;
+      try{
+            int [] trimArry= new int[size1];
+            for(int k=0;k<size1;k++){
+                trimArry[k]=newArry[k];
+            }
+            newArry=trimArry;
+      } catch(Exception e){
+          System.out.println("Error  = " + e);
+      }
     }
 
     public void clear(){
@@ -123,8 +152,7 @@ public class Array {
 
     @Override
     public String toString() {
-        return "Array : " +
-                  Arrays.toString(newArry) ;
+        return Arrays.toString(newArry) ;
     }
 
 
